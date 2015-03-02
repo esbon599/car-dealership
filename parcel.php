@@ -87,7 +87,7 @@ class Parcel
         <h1>Here are your details!</h1>
         <ul>
             <?php
-                if($_GET["length"] != 0 && $_GET["width"] != 0 && $_GET["height"] != 0 && $_GET["weight"])
+                if($_GET["length"] && $_GET["width"] && $_GET["height"] && $_GET["weight"])
                 {
                     //create the parcel object if it has all the inputs
                     $package = new Parcel($_GET["length"], $_GET["width"], $_GET["height"], $_GET["weight"]);
