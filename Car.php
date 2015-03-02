@@ -18,9 +18,22 @@ class Car
         return $this->make_model;
     }
 
+    function setMake_model($setModel)
+    {
+        $this->make_model = $setModel;
+    }
+
     function getPrice()
     {
         return $this->price;
+    }
+
+    function setPrice($new_price)
+    {
+        $float_price = (float) $new_price;
+        if ($float_price != 0) {
+            $this->price = $new_price;
+        }
     }
 
     function getMiles()
@@ -28,11 +41,18 @@ class Car
         return $this->miles;
     }
 
+    function setMiles()
+    {
+        $this->miles = $setMiles;
+    }
+
 }
 
 $porsche = new Car("2014 Porsche 911", 114991, 7864);
+$porsche->setMake_model("haha");
 
 $ford = new Car("2011 Ford F450", 55995, 14241);
+$ford->setPrice("12");
 
 $lexus = new Car("2013 Lexus RS 350", 44700, 20000);
 
