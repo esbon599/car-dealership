@@ -47,15 +47,15 @@ class Triangle
     {
         if ($this->getSide1()==$this->getSide2() && $this->getSide2()==$this->getSide3() && $this->getSide1()==$this->getSide3())
         {
-            echo "Equilateral!";
+            return "Equilateral!";
         }
         elseif ($this->getSide1()==$this->getSide2() || $this->getSide2()==$this->getSide3() || $this->getSide1()==$this->getSide3())
         {
-            echo "Isosceles!";
+            return "Isosceles!";
         }
         else
         {
-            echo "Scalene!";
+            return "Scalene!";
         }
     }
 }
@@ -64,25 +64,49 @@ $input1 = $_GET["side1"];
 $input2 = $_GET["side2"];
 $input3 = $_GET["side3"];
 
+$message = "";
+$error = "";
+
 if($input1 && $input2 && $input3)
 {
     $inputs = array($input1,$input2,$input3);
 
-    var_dump($inputs);
-
     sort($inputs);
-
-    var_dump($inputs);
 
     if($inputs[0]+$inputs[1]>$inputs[2])
     {
         $triangle = new Triangle($input1, $input2, $input3);
-        $triangle->getTriangleType();
+        $message = $triangle->getTriangleType();
     } else
     {
-        echo "Your sides are not valid, fool!";
+        $error = "Your sides are not valid, fool!";
     }
 
 }
+else {
+    $error = "Please input values for all sides.";
+}
 
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>Triangle Type Analysis</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Your Triangle's Info</h1>
+
+            <p>
+                <?php
+                    if($error) {
+                        echo $error;
+                    } else {
+                        echo "Your triangle's type is " . $message;
+                    }
+                ?>
+            </p>
+    </body>
+</html>
