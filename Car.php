@@ -1,16 +1,32 @@
 <?php
 
+$porsche_img = "http://hdwallpapersd.com/wp-content/uploads/2014/09/awesome-porsche-911-turbo-picture.jpg";
+$ford_img = "http://www.thedieselstop.com/forums/attachments/f122/9386d1293229464-ford-f450-22-5-rims-dsc00114.jpg";
+$lexus_img = "http://static.usnews.rankingsandreviews.com/images/Auto/izmo/367633/2015_lexus_rx_350_sideview.jpg";
+$mercedes_img = "http://www.blogcdn.com/www.autoblog.com/media/2011/08/02-2012-mercedes-benz-cls550-review.jpg";
+
+
 class Car
 {
     private $make_model;
     private $price;
     private $miles;
+    private $image;
 
-    function __construct($mm, $p, $mi)
+    function __construct($mm, $p, $mi, $im)
     {
         $this->make_model = $mm;
         $this->price = $p;
         $this->miles = $mi;
+        $this->image = $im;
+    }
+
+    function getImg() {
+        return $this->image;
+    }
+
+    function setImg($setImg) {
+        $this->image = $setImg;
     }
 
     function getMake_model()
@@ -48,15 +64,15 @@ class Car
 
 }
 
-$porsche = new Car("2014 Porsche 911", 114991, 7864);
-$porsche->setMake_model("haha");
+$porsche = new Car("2014 Porsche 911", 114991, 7864, $porsche_img);
+//$porsche->setMake_model("haha");
 
-$ford = new Car("2011 Ford F450", 55995, 14241);
+$ford = new Car("2011 Ford F450", 55995, 14241, $ford_img);
 $ford->setPrice("12");
 
-$lexus = new Car("2013 Lexus RS 350", 44700, 20000);
+$lexus = new Car("2013 Lexus RX 350", 44700, 20000, $lexus_img);
 
-$mercedes = new Car("Mercedes Benz CLS550", 39900, 37979);
+$mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, $mercedes_img);
 
 $cars = array($porsche, $ford, $lexus, $mercedes);
 
@@ -84,6 +100,7 @@ foreach ($cars as $car) {
                 echo "<ul>";
                     echo "<li> $" . $car->getPrice() . "</li>";
                     echo "<li> Miles: " . $car->getMiles() . "</li>";
+                    echo '<img src="' . $car->getImg() . '">';
                 echo "</ul>";
             }
         ?>
