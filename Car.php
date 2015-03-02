@@ -2,9 +2,9 @@
 
 class Car
 {
-    public $make_model;
-    public $price;
-    public $miles;
+    private $make_model;
+    private $price;
+    private $miles;
 
     function __construct($mm, $p, $mi)
     {
@@ -12,6 +12,22 @@ class Car
         $this->price = $p;
         $this->miles = $mi;
     }
+
+    function getMake_model()
+    {
+        return $this->make_model;
+    }
+
+    function getPrice()
+    {
+        return $this->price;
+    }
+
+    function getMiles()
+    {
+        return $this->miles;
+    }
+
 }
 
 $porsche = new Car("2014 Porsche 911", 114991, 7864);
@@ -26,7 +42,7 @@ $cars = array($porsche, $ford, $lexus, $mercedes);
 
 $cars_matching_search = array();
 foreach ($cars as $car) {
-     if ($car->price < $_GET["price"]) {
+     if ($car->getPrice() < $_GET["price"]) {
         array_push($cars_matching_search, $car);
     }
 }
@@ -44,10 +60,10 @@ foreach ($cars as $car) {
         <ul>
             <?php
             foreach ($cars_matching_search as $car) {
-                echo "<li> $car->make_model </li>";
+                echo "<li>" . $car->getMake_model() . "</li>";
                 echo "<ul>";
-                    echo "<li> $$car->price </li>";
-                    echo "<li> Miles: $car->miles </li>";
+                    echo "<li> $" . $car->getPrice() . "</li>";
+                    echo "<li> Miles: " . $car->getMiles() . "</li>";
                 echo "</ul>";
             }
         ?>
