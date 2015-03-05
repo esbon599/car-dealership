@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>Find a car</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Find a car!</h1>
+            <form action="/result">
+                <div class="form-group">
+                    <label for="model">Enter Model:</label>
+                    <input id="model" type="text" name="model" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="price">Enter Price:</label>
+                    <input id="price" type="number" name="price" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="miles">Enter Mileage:</label>
+                    <input id = "miles" type="number" name="miles" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="image">Enter Image:</label>
+                    <input id = "image" type="text" name="image" class="form-control">
+                </div>
+                <button type="submit" class="btn-success">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
