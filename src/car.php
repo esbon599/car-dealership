@@ -54,4 +54,12 @@
         $this->miles = $setMiles;
     }
 
+    function save(){
+        array_push($_SESSION["list_of_cars"], $this);
+    }
+
+    static function getCars() {
+        return $_SESSION["list_of_cars"];
+    }
+
 } ?>
