@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Your Car Dealership's Homepage</title>
+        <title>Your Car Dealership's Results</title>
     </head>
     <body>
         <h1>Your Car Dealership</h1>
@@ -11,8 +11,10 @@
                 <li>{{car.getMake_model}}</li>
                 <li>{{car.getPrice}}</li>
                 <li>{{car.getMiles}}</li>
-                <li>{{car.getImg}}</li>
+                <img src="{{car.getImg}}">
             {% endfor %}
         </ul>
+        <a href="/">Add another car</a>
+        <a href="/delete">Delete all posts</a>
     </body>
 </html>
