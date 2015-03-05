@@ -6,5 +6,13 @@
     </head>
     <body>
         <h1>Your Car Dealership</h1>
+        <ul>
+            {% for car in cars %}
+                <li>{{car.getMake_model}}</li>
+                <li>{{car.getPrice}}</li>
+                <li>{{car.getMiles}}</li>
+                <li>{{car.getImg}}</li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
