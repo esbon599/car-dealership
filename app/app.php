@@ -4,7 +4,9 @@
 
     session_start();
 
-    
+    if (empty($_SESSION['list_of_cars'])) {
+        $_SESSION['list_of_cars'] = array();
+    }
 
     $app = new Silex\Application();
 
@@ -19,12 +21,18 @@
 
     $app->post("/result", function() use ($app) {
         $car = new Car($_POST['model'], $_POST['price'], $_POST['miles'], $_POST['image']);
-        var_dump($car);
-
-        $cars = array($car);
+        $car->save();
 
 
-        return $app['twig']->render('result.twig', array('cars' => $cars));
+        return $app['twig']->render('result.twig', array('cars' => Car::getCars()));
+    });
+
+    $app->get("/delete", function() use ($app) {
+
+
+        $_SESSION['list_of_cars'] = array();
+
+        return $app['twig']->render('delete.twig');
     });
 
     return $app;
